@@ -129,9 +129,9 @@
 2. Execute the following _command_:
    1. For **Ubuntu**, **MacOS** & **Android**:
       ```bash
-      ./linux.sh -i init_data_you
+      ./linux.sh -i your_init_data
       ```
    2. For **Windows**:
       ```cmd
-      ./windows.cmd -i init_data_you
+      ./windows.cmd -i your_init_data
       ```
