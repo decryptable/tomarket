@@ -43,13 +43,19 @@
 2. Buka aplikasi Termux.
 3. Pastikan `git` dan `nodejs` sudah terinstall. Jika belum, jalankan _command_ berikut pada Termux:
    ```bash
-   pkg install git openssh nodejs nodejs-lts -y
+   pkg install git openssh nodejs -y
    ```
-4. Berikan izin `execute` untuk [`linux.sh`](./linux.sh) dengan cara menjalankan:
+4. Kemudian clone repository ini:
+
+   ```bash
+   git clone https://github.com/decryptable/tomarket.git && cd tomarket
+   ```
+
+5. Berikan izin `execute` untuk [`linux.sh`](./linux.sh) dengan cara menjalankan:
    ```bash
    chmod +x ./linux.sh
    ```
-5. **SELESAI!** Instruksi selanjutnya silahkan baca pada bagian [penggunaan](#penggunaan).
+6. **SELESAI!** Instruksi selanjutnya silahkan baca pada bagian [penggunaan](#penggunaan).
 
 ### 💻 Windows
 
@@ -102,15 +108,23 @@
 
 ### 📱 Android
 
-1. Make sure you already have the Termux app. If not, please [download here](https://f-droid.org/repo/com.termux_1020.apk).
+1. Make sure you already have the Termux application. If not, please [download here](https://f-droid.org/repo/com.termux_1020.apk).
 2. Open the Termux application.
 3. Make sure `git` and `nodejs` are installed. If not, run the following _command_ on Termux:
+   ```bash
+   pkg install git openssh nodejs -y
+   ```
+4. Then clone this repository:
 
    ```bash
-   pkg install git openssh nodejs nodejs-lts -y
+   git clone https://github.com/decryptable/tomarket.git && cd tomarket
    ```
 
-4. **DONE!** Further instructions please read the [usage](#usage) section.
+5. Grant `execute` permission to [`linux.sh`](./linux.sh) by running:
+   ```bash
+   chmod +x ./linux.sh
+   ```
+6. **DONE!** Further instructions please read the [usage](#usage) section.
 
 ### 💻 Windows
 
