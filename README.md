@@ -5,12 +5,12 @@
 
 <hr/>
 
-<p>Author: <a href="https://t.me/decryptable">@decryptable</a></p>
-</div>
-<br/>
-<br/>
-<br/>
+<p>Author: <a href="https://t.me/decryptable" target="_blank">@decryptable</a></p>
 
+<a href="https://saweria.co/decryptable" target="_blank">
+<img src="./donate.png" width="120">
+</a>
+</div>
 # 🇮🇩 Indonesian
 
 > Tool untuk mendapatkan poin maksimal dari bot [@Tomarket_ai_bot 🍅](https://t.me/@Tomarket_ai_bot) untuk setiap game-nya.
