@@ -92,7 +92,7 @@
    ```bash
    chmod +x ./linux.sh
    ```
-5. **DONE!** Further instructions please read the [usage](#-english) section.
+5. **DONE!** Further instructions please read the [usage](#usage) section.
 
 ### 📱 Android
 
