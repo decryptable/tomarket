@@ -1,0 +1,26 @@
+{
+  "name": "tomarket",
+  "module": "index.js",
+  "type": "module",
+  "license": "UNLICENSED",
+  "main": "index.js",
+  "author": {
+    "name": "decryptable",
+    "url": "https://t.me/decryptable"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "bytenode": "^1.5.6",
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
+    "console-clear": "^1.1.1",
+    "figlet": "^1.7.0",
+    "ora": "^5.4.1",
+    "query-string": "6.0"
+  }
+}
