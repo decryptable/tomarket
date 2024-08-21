@@ -22,8 +22,7 @@ const showBanner = () => {
   const header = chalk.redBright(figlet.textSync(program_name));
 
   let subheader =
-    chalk.yellow.bold("Author: ") +
-    chalk.magenta.underline("@decryptable\n");
+    chalk.yellow.bold("Author: ") + chalk.magenta.underline("@decryptable\n");
 
   subheader +=
     chalk.yellow.bold("Source: ") +
@@ -42,7 +41,7 @@ showBanner();
 program.name(program_name);
 program.version(version);
 program.requiredOption(
-  "-i, --init_data <your_init_data>",
+  "-i, --init_data <init_data>",
   "`init_data` of your Telegram account"
 );
 program.showHelpAfterError();
@@ -50,7 +49,6 @@ program.showHelpAfterError();
 program.parse();
 
 const options = program.opts();
-
 const init_data = parseInitData(options.init_data);
 
 const spinner = ora(chalk.gray("Validating your init_data")).start();
@@ -58,6 +56,7 @@ const spinner = ora(chalk.gray("Validating your init_data")).start();
 const main = async () => {
   let remainingTickets;
   let balance;
+  let access_token;
 
   const updateUserInfo = async (access_token) => {
     const user_info = await userInfo(access_token);
@@ -84,7 +83,7 @@ const main = async () => {
       process.exit(0);
     }
 
-    const access_token = validateAuth.access_token;
+    access_token = validateAuth.access_token;
 
     showBanner();
 

@@ -3,6 +3,7 @@ title Tomarket Tool - by https://t.me/@decryptable
 
 cls
 
-echo Please wait...
+echo Checking update...
 npm i > NUL
+npm update > NUL
 node ./index.js -i %*
