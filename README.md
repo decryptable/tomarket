@@ -6,8 +6,6 @@
 <hr/>
 
 <p>Author: <a href="https://t.me/decryptable" target="_blank">@decryptable</a></p>
-<<<<<<< HEAD
-=======
 
 <a href="https://saweria.co/decryptable" target="_blank">
 <img src="https://github.com/user-attachments/assets/382b3377-e51a-4a97-9f92-5f21252ef682" alt="donate" width="120">
@@ -16,7 +14,6 @@
 <br/>
 <br/>
 <br/>
->>>>>>> 53d862f17e6e4a70b377c7f65a1106631e41391a
 
 <a href="https://saweria.co/decryptable" target="_blank">
 <img src="./donate.png" width="120">
