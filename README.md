@@ -5,7 +5,11 @@
 
 <hr/>
 
-<p>Author: <a href="https://t.me/decryptable">@decryptable</a></p>
+<p>Author: <a href="https://t.me/decryptable" target="_blank">@decryptable</a></p>
+
+<a href="https://saweria.co/decryptable" target="_blank">
+<img src="https://github.com/user-attachments/assets/382b3377-e51a-4a97-9f92-5f21252ef682" alt="donate" width="120">
+</a>
 </div>
 <br/>
 <br/>
@@ -20,6 +24,7 @@
 1. Pastikan sudah terinstall [git](https://git-scm.com/). Jika belum silahkan download & install. **(WAJIB)**
 2. Pastikan sudah terinstall [NodeJS](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs). **(WAJIB)**
 3. Buka aplikasi terminal, kemudian clone repository ini:
+
 
    ```bash
    git clone https://github.com/decryptable/tomarket.git && cd tomarket
