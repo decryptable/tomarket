@@ -16,7 +16,7 @@ is_nodejs_installed() {
 
 is_nodejs_in_version_14_higher() {
     NODE_VERSION=$(node -v | grep -oP '^v\K[0-9]+')
-
+    
     if [ "$NODE_VERSION" -lt 14 ]; then
         echo "Node.js version is lower than 14. Upgrading to Node.js LTS..."
         pkg uninstall nodejs -y
@@ -30,24 +30,24 @@ app() {
     is_nodejs_installed
     is_nodejs_in_version_14_higher
     is_git_installed
-
+    
     # check if file "tomarket.js" exists
     if [ -f index.js ]; then
         echo "Checking avaiable update..."
         git pull
-
+        
         echo "Updating dependencies..."
         npm update
-
+        
         echo "Starting..."
         node $(pwd)/index.js
     else
-        git clone https://github.com/decryptable/tomarket tomarket-tool
+        git clone https://github.com/decryptable/tomarket tomarket-tool &>/dev/null
         cd tomarket-tool
-
+        
         echo "Installing dependencies..."
         npm install
-
+        
         app
     fi
 }
