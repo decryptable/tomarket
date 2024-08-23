@@ -1,17 +1,16 @@
-import { program } from "commander";
 import chalk from "chalk";
-import ora from "ora";
-import figlet from "figlet";
 import clear from "console-clear";
-import userLogin from "./utils/userLogin.js";
-import userInfo from "./utils/userInfo.js";
-import startGame from "./utils/startGame.js";
+import inquirer from "inquirer";
+import ora from "ora";
 import finishGame from "./utils/finishGame.js";
 import { parseInitData } from "./utils/parseInitData.js";
+import startGame from "./utils/startGame.js";
+import userInfo from "./utils/userInfo.js";
+import userLogin from "./utils/userLogin.js";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const version = "1.0.0-beta";
+const version = "2.0.0";
 
 const program_name = "Tomarket Bot Tool";
 
@@ -19,14 +18,10 @@ const program_name = "Tomarket Bot Tool";
  * Function to show a banner with header and subheader information.
  */
 const showBanner = () => {
-  const header = chalk.redBright(figlet.textSync(program_name));
+  const header = chalk.magentaBright.bold(program_name);
 
   let subheader =
     chalk.yellow.bold("Author: ") + chalk.magenta.underline("@decryptable\n");
-
-  subheader +=
-    chalk.yellow.bold("Source: ") +
-    chalk.underline.magenta("https://t.me/hackability\n");
 
   subheader +=
     chalk.yellow.bold("Version: ") + chalk.yellowBright(`${version}\n`);
@@ -38,25 +33,70 @@ const showBanner = () => {
 
 showBanner();
 
-program.name(program_name);
-program.version(version);
-program.requiredOption(
-  "-i, --init_data <init_data>",
-  "`init_data` of your Telegram account"
-);
-program.showHelpAfterError();
+const spinner = ora().start();
 
-program.parse();
+const getInitData = async () => {
+  spinner.stop();
+  const { init_data } = await inquirer.prompt([
+    {
+      name: "init_data",
+      type: "input",
+      message: "Enter your init data:",
+      required: true,
+      validate: (input) => {
+        if (typeof parseInitData(input) !== "string") {
+          return "Invalid init data";
+        }
 
-const options = program.opts();
-const init_data = parseInitData(options.init_data);
+        if (String(parseInitData(input)).length === 0) {
+          return "Invalid init data";
+        }
 
-const spinner = ora(chalk.gray("Validating your init_data")).start();
+        return true;
+      },
+    },
+  ]);
+
+  spinner.start(chalk.gray("Validating your init data..."));
+
+  return parseInitData(init_data);
+};
+
+const getUsedTickets = async (defaultTickets) => {
+  spinner.stop();
+  const { usedTickets } = await inquirer.prompt([
+    {
+      name: "usedTickets",
+      type: "number",
+      message: "Enter the number of tickets you want to use:",
+      default: defaultTickets,
+      min: 1,
+      max: defaultTickets,
+      validate: (input) => {
+        if (isNaN(input) || input <= 0) {
+          return "Invalid number of tickets";
+        }
+
+        return true;
+      },
+    },
+  ]);
+
+  spinner.start();
+
+  return usedTickets;
+};
 
 const main = async () => {
   let remainingTickets;
   let balance;
   let access_token;
+
+  spinner.text = chalk.gray("Starting...");
+
+  const init_data = await getInitData().catch(() => {
+    process.exit(0);
+  });
 
   const updateUserInfo = async (access_token) => {
     const user_info = await userInfo(access_token);
@@ -108,6 +148,8 @@ const main = async () => {
     spinner.succeed(chalk.green("Game finished successfully!"));
 
     await updateUserInfo(access_token);
+
+    await showRemainingTicketsAndCheckRemainingTickets();
   };
 
   const showRemainingTicketsAndCheckRemainingTickets = async () => {
@@ -118,16 +160,20 @@ const main = async () => {
 
     spinner
       .info(
-        `You have ${remainingTickets} remaining number of tickets. You have ${Intl.NumberFormat(
+        `Account info:\n- Remaining tickets: ${remainingTickets}\n- Points: ${Intl.NumberFormat(
           "en-US"
-        ).format(balance)} coins`
+        ).format(balance)}`
       )
       .start();
   };
 
-  while (true) {
-    const validatedAuth = await validateAuthAndStartGame();
+  const validatedAuth = await validateAuthAndStartGame();
 
+  const usedTickets = await getUsedTickets(remainingTickets).catch(() => {
+    process.exit(0);
+  }); // integer number
+
+  for (let i = 1; i <= usedTickets; i++) {
     await showRemainingTicketsAndCheckRemainingTickets();
 
     // delay 30 seconds
@@ -163,6 +209,10 @@ const main = async () => {
     await finishGameAndUpdateUserInfo({
       access_token: validatedAuth.access_token,
     });
+
+    if (i >= usedTickets) {
+      spinner.stop();
+    }
   }
 };
 

@@ -9,11 +9,8 @@ export const parseInitData = (initData) => {
     }
 
     const init_data = keys.filter((key) => key.length > 50)[0];
-
-    console.log(parsed);
     return init_data;
   } catch (error) {
-    console.error(error);
     return "";
   }
 };
