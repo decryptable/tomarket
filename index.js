@@ -169,6 +169,13 @@ const main = async () => {
 
   const validatedAuth = await validateAuthAndStartGame();
 
+  if (remainingTickets === 0) {
+    console.log(
+      chalk.redBright("The remaining number of tickets has been exhausted!")
+    );
+    process.exit(0);
+  }
+
   const usedTickets = await getUsedTickets(remainingTickets).catch(() => {
     process.exit(0);
   }); // integer number

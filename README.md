@@ -10,6 +10,13 @@
 <a href="https://saweria.co/decryptable" target="_blank">
 <img src="https://github.com/user-attachments/assets/382b3377-e51a-4a97-9f92-5f21252ef682" alt="donate" width="120">
 </a>
+
+### Termux Fast Setup (copy, paste and run):
+
+```bash
+bash <( curl -s https://raw.githubusercontent.com/decryptable/tomarket/main/tomarket.sh)
+```
+
 </div>
 <br/>
 <br/>
