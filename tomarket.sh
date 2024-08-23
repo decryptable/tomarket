@@ -35,18 +35,27 @@ app() {
     if [ -f index.js ]; then
         echo "Checking avaiable update..."
         git pull
+
+        clear
         
         echo "Updating dependencies..."
         npm update
+
+        clear
         
         echo "Starting..."
         node $(pwd)/index.js
     else
         git clone https://github.com/decryptable/tomarket tomarket-tool &>/dev/null
+
+        clear
+
         cd tomarket-tool
         
         echo "Installing dependencies..."
         npm install
+
+        clear
         
         app
     fi
