@@ -32,32 +32,22 @@ app() {
     is_git_installed
     
     # check if file "tomarket.js" exists
-    if [ -f index.js ]; then
+    if [ -d "tomarket-tool" ]; then
+        cd tomarket-tool
         echo "Checking avaiable update..."
         git pull
-
-        clear
-        
-        echo "Updating dependencies..."
-        npm update
-
-        clear
         
         echo "Starting..."
         node $(pwd)/index.js
     else
         git clone https://github.com/decryptable/tomarket tomarket-tool &>/dev/null
-
-        clear
-
         cd tomarket-tool
         
         echo "Installing dependencies..."
         npm install
 
-        clear
-        
-        app
+        echo "Starting..."
+        node $(pwd)/index.js
     fi
 }
 
