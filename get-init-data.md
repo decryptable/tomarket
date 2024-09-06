@@ -2,7 +2,7 @@
 Gunakan kode berikut untuk mendapatkan `init_data` Telegram bot Tomarket:
 
 ```javascript
-const searchIframeAndCopy=()=>{const t=setInterval((()=>{const e=Array.from(document.getElementsByTagName("iframe")).find((t=>t.src.includes("https://mini-app.tomarket.ai/#")));if(e){clearInterval(t);const a=e.src.replace("https://mini-app.tomarket.ai/#tgWebAppData=","");navigator.clipboard.writeText(a).then((()=>{alert("Init data berhasil disalin ke clipboard! Tempelkan ke bot @Tomarket_ai_bot.")}))["catch"]((()=>{alert("Salin init data berikut ini secara manual:\n\n"+a)}))}}),1e3)};alert("Silakan jalankan bot Tomarket Anda. Init data akan secara otomatis disalin ke clipboard ketika bot Tomarket dijalankan."),searchIframeAndCopy();
+const searchIframeAndCopy=()=>{let a=setInterval(()=>{let e=Array.from(document.getElementsByTagName("iframe")).find(a=>a.src.includes("https://mini-app.tomarket.ai/#"));if(e){clearInterval(a);let t=e.src.replace("https://mini-app.tomarket.ai/#tgWebAppData=",""),i=new URLSearchParams(decodeURIComponent(t)),n=i.get("query_id"),r=i.get("user"),s=i.get("auth_date"),d=i.get("hash"),l=`query_id=${n}&user=${r}&auth_date=${s}&hash=${d}`;navigator.clipboard.writeText(l).then(()=>{alert("Init data berhasil disalin ke clipboard! Tempelkan ke bot @Tomarket_ai_bot.")}).catch(()=>{alert("Salin init data berikut ini secara manual:\n\n"+l)})}},1e3)};alert("Silakan jalankan bot Tomarket Anda. Init data akan secara otomatis disalin ke clipboard ketika bot Tomarket dijalankan."),searchIframeAndCopy();
 ```
 
 ## Bagaimana Cara Mendapatkan Init Data?
@@ -21,7 +21,7 @@ berarti kode berhasil dijalankan. Lanjut buka bot Tomarket Anda. `init_data` aka
 Use the following code to get the `init_data` Telegram bot Tomarket:
 
 ```javascript
-const searchIframeAndCopy=()=>{const t=setInterval((()=>{const e=Array.from(document.getElementsByTagName("iframe")).find((t=>t.src.includes("https://mini-app.tomarket.ai/#")));if(e){clearInterval(t);const a=e.src.replace("https://mini-app.tomarket.ai/#tgWebAppData=","");navigator.clipboard.writeText(a).then((()=>{alert("Init Data successfully copied to clipboard! Paste into @Tomarket_ai_bot bot.")}))["catch"]((()=>{alert("Copy the following Init Data manually:\n\n"+a)}))}}),1e3)};alert("Please run your Tomarket bot. Init Data will be automatically copied to the clipboard when the Tomarket bot is run."),searchIframeAndCopy();
+const searchIframeAndCopy=()=>{let e=setInterval(()=>{let t=Array.from(document.getElementsByTagName("iframe")).find(e=>e.src.includes("https://mini-app.tomarket.ai/#"));if(t){clearInterval(e);let a=t.src.replace("https://mini-app.tomarket.ai/#tgWebAppData=",""),i=new URLSearchParams(decodeURIComponent(a)),o=i.get("query_id"),r=i.get("user"),n=i.get("auth_date"),l=i.get("hash"),s=`query_id=${o}&user=${r}&auth_date=${n}&hash=${l}`;navigator.clipboard.writeText(s).then(()=>{alert("Init data has been successfully copied to the clipboard! Paste it into the @Tomarket_ai_bot.")}).catch(()=>{alert("Copy the following init data manually:\n\n"+s)})}},1e3)};alert("Please run your Tomarket bot. The init data will be automatically copied to your clipboard once the bot is launched."),searchIframeAndCopy();
 ```
 
 ## How to Get Init Data?
