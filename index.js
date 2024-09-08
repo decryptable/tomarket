@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!node
 
 import chalk from "chalk";
 import clear from "console-clear";
